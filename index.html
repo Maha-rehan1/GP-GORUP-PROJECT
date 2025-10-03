@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Echo Chamber & Brainrot</title> <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Permanent+Marker&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Permanent Marker', cursive;
+            background: #1e1e24;
+            /* dark charcoal */
+            color: #eae7dc;
+            /* soft parchment white */
+            overflow-x: hidden;
+            font-size: 1.25rem;
+            /* increased base font size */
+        }
+
+        /* Comic-style paper card */
+        .old-paper {
+            background: #2b2b33;
+            /* dark gray paper */
+            border: 4px solid #111;
+            box-shadow: 6px 6px 0 #000;
+            border-radius: 10px;
+            padding: 40px;
+            margin: 30px auto;
+            max-width: 1100px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #5c1e1e, #822727);
+            /* deep wine red */
+            color: #fff;
+            border-bottom: 5px solid #000;
+            box-shadow: 0 8px 0 #111;
+        }
+
+        header h1 {
+            font-family: 'Bangers', cursive;
+            font-size: 4rem;
+            /* increased size */
+            color: #f2c94c;
+            /* muted golden yellow */
+            text-shadow: 3px 3px 0 #000;
+        }
+
+        header img {
+            max-width: 200px;
+            /* slightly larger */
+            border-radius: 100px;
+            border: 3px solid #000;
+        }
+
+        .highlight-red {
+            background: #6b0f1a;
+            /* dark crimson */
+            color: #fff;
+            padding: 6px 12px;
+            border-radius: 6px;
+            box-shadow: 2px 2px 0 #000;
+            font-size: 1.3rem;
+            /* bigger highlight text */
+        }
+
+        .highlight-yellow {
+            background: #f2c94c;
+            /* darker muted yellow */
+            padding: 6px 12px;
+            border-radius: 6px;
+            color: #111;
+            box-shadow: 2px 2px 0 #000;
+            font-size: 1.3rem;
+            /* bigger highlight text */
+        }
+
+        .psych-section h2 {
+            font-family: 'Bangers', cursive;
+            font-size: 2.5rem;
+            /* increased size */
+            color: #f2c94c;
+            border-bottom: 3px dashed #fff;
+            display: inline-block;
+            padding-bottom: 5px;
+            text-shadow: 2px 2px 0 #6b0f1a;
+        }
+
+        .card {
+            border: 3px solid #000 !important;
+            border-radius: 10px !important;
+            box-shadow: 5px 5px 0 #111 !important;
+            background: #3a3a46;
+            /* darker muted gray */
+            color: #eae7dc;
+            font-size: 1.2rem;
+            /* slightly bigger text inside cards */
+        }
+
+        .card-title {
+            font-family: 'Bangers', cursive;
+            font-size: 1.8rem;
+            /* increased size */
+            color: #f2c94c;
+            text-shadow: 2px 2px 0 #000;
+        }
+
+        .btn-danger {
+            background: #822727;
+            border: 3px solid #000;
+            color: #fff;
+            font-weight: bold;
+            box-shadow: 3px 3px 0 #000;
+            font-size: 1.2rem;
+            /* larger button text */
+        }
+
+        .btn-danger:hover {
+            background: #f2c94c;
+            color: #000;
+            transform: translate(-2px, -2px);
+            box-shadow: 5px 5px 0 #000;
+        }
+
+        .cta {
+            text-align: center;
+            margin: 50px 0;
+        }
+
+        .cta a {
+            text-decoration: none;
+            background: #6b0f1a;
+            /* dark crimson */
+            color: white;
+            padding: 18px 36px;
+            font-size: 1.8rem;
+            /* larger */
+            border-radius: 50px;
+            font-family: 'Bangers', cursive;
+            border: 3px solid #000;
+            box-shadow: 5px 5px 0 #111;
+            transition: 0.3s;
+        }
+
+        .cta a:hover {
+            background: #f2c94c;
+            color: #000;
+            transform: scale(1.05);
+        }
+
+
+        .overlay {
+
+            display: none;
+
+            position: fixed;
+
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+
+            background: rgba(0, 0, 0, 0.7);
+
+            justify-content: center;
+
+            align-items: center;
+
+        }
+
+        .popup {
+
+            background: #fff;
+
+            padding: 10px;
+
+            border-radius: 10px;
+
+            max-width: 800px;
+
+            width: 90%;
+
+        }
+
+        .close-btn {
+
+            background: red;
+
+            color: white;
+
+            border: none;
+
+            padding: 5px 10px;
+
+            cursor: pointer;
+
+            float: right;
+
+        }
+
+        iframe {
+
+            width: 100%;
+
+            height: 500px;
+
+            border: none;
+
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <img src="logo.jpg" alt="Logo">
+        <h1>Echo Chambers & The Psychology Of Brainrot</h1>
+        <p class="highlight-yellow">Understanding Disruption in the Digital Age</p>
+    </header>
+
+    <!-- Main Old Paper Section -->
+    <section class="old-paper text-center">
+        <h2 id="thepsy" class="mb-4">Explaining The Echo Chamber</h2>
+        <p> In essence, the <span class="highlight-red">echo chamber</span> doesn't just host the content of "brain
+            rot"—it
+            functions as an accelerant, ensuring that its impacts on how young people think, speak, and feel become
+            deeply entrenched and normalized.
+            Young people are so saturated with brainrot that they now mindlessly repeat it in their daily conversations.
+            This constant exposure has rewired how they communicate, replacing nuanced language with reactive memes and
+            in-group slang that kills real conversation.
+            It’s also warping their mental well-being by normalizing negative thought patterns, distorting their sense
+            of reality, and replacing critical thinking with passive consumption—which only fuels anxiety and polarized
+            worldviews.
+            This has created a <span class="highlight-yellow">creatively sterile generation</span>, meaning that they
+            are completely incapable of coming up with their own innovative ideas.
+            Facing this creativity famine, everyone just echoes the same jokes and memes they’ve absorbed, turning the
+            entire world into one giant echo chamber.
+            In the end, the echo chamber doesn’t just host brainrot—it acts as an accelerant, cementing its hold on how
+            young people think, speak, and feel until it all just seems normal.
+        </p>
+    </section>
+
+    <section class="old-paper text-center">
+        <h2 id="thepsy" class="mb-4">Aims :</h2>
+        <p>Our aim is to raise awareness about the severe impact of this cycle on language and cognitive health.
+            Highlighting how
+            this environment degrades communication skills, stifles original thought, and undermines mental well-being.
+            By
+            exposing
+            these dangers, we hope to spark meaningful change and help rebuild a culture that values depth, creativity,
+            and
+            authentic human connection.</p>
+    </section>
+    <!-- Psychologist Views -->
+    <section class="old-paper psych-section">
+        <h2>Psychologist Views</h2>
+        <section class="old-paper psych-section">
+            <div class="row g-4"> <!-- Card 1 -->
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">Dr. Ananya Sharma</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">PhD, Child Psychology</h6>
+                            <p class="card-text">Dr. Sharma highlights that constant exposure to short-form
+                                dopamine-driven content disrupts memory development and reduces attention span in young
+                                people.</p>
+                            <a href="ananya.html" target="_blank" class="btn btn-danger"> Visit Website </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">Dr. Rajiv Mehta</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">M.D., Behavioral Psychology</h6>
+                            <p class="card-text">Dr. Mehta explains how echo chambers amplify extreme views, making Gen
+                                Z less open to diverse perspectives and more prone to rigid identity bubbles.</p>
+                            <a href="phycologist2" target="_blank" class="btn btn-danger"> Visit Website </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">Dr. Neha Kapoor</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">MSc, Cognitive Neuroscience</h6>
+                            <p class="card-text">Dr. Kapoor believes "brainrot" is a result of overstimulation—where
+                                the brain constantly craves novelty, weakening deeper thinking and focus.</p>
+                            <a href="pychologist3" target="_blank" class="btn btn-danger"> Visit Website </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!-- Game Section -->
+    <section class="old-paper psych-section">
+        <div class="row g-4"> <!-- Card 1 -->
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Escape Room Game</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">...</h6>
+                        <p class="card-text">tell about the game</p>
+                        <iframe src="https://scratch.mit.edu/projects/1187984452/embed" allowtransparency="true"
+                            width="485" height="402" frameborder="0" scrolling="no" allowfullscreen>
+
+                        </iframe>
+                        <a href="ananya.html" target="_blank" class="btn btn-danger"> Visit Website </a>
+                        <button onclick="openPopup()">Play Scratch Game</button>
+
+                        <!-- Popup -->
+
+                        <div class="overlay" id="popup">
+
+                            <div class="popup">
+
+                                <button class="close-btn" onclick="closePopup()">X</button>
+
+                                <iframe src="
+https://scratch.mit.edu/projects/1190836109/embed" allowfullscreen></iframe>
+
+                            </div>
+
+                        </div>
+
+                        <script>
+
+                            function openPopup() {
+
+                                document.getElementById("popup").style.display = "flex";
+
+                            }
+
+                            function closePopup() {
+
+                                document.getElementById("popup").style.display = "none";
+
+                            }
+
+                        </script>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Word Of the Day Game</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">...</h6>
+                        <p class="card-text">tell about the game</p>
+                        <a href="pychologist3" target="_blank" class="btn btn-danger"> Visit Website </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Comic Book -->
+    <section class="cta">
+        <p class="mb-3">Want to learn more in a fun way?</p>
+        <a href="#">Check Out Our Comic Book!</a>
+    </section>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
